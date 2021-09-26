@@ -29,9 +29,22 @@ int main() {
 
     sf::Clock clock;
     double lag = 0.0;
+    double maxFrameTime = 0.0f;
+    int frameCount = 0;
     while (window.isOpen()) {
-        double elapsed = clock.restart().asMilliseconds();
-        lag += elapsed;
+        auto elapsed = clock.restart();
+        double frameTimeMs = elapsed.asMilliseconds();
+        lag += frameTimeMs;
+
+        if (frameTimeMs > maxFrameTime) maxFrameTime = frameTimeMs;
+
+        frameCount++;
+        if (frameCount == 600) {
+            frameCount = 0;
+            double frameTime = elapsed.asMicroseconds();
+            printf("Last frametime %.2fms, %.0f fps, %.1fms maxFrameTime\n", frameTime / 1000.f, 1000000.0f / (frameTime), maxFrameTime);
+            maxFrameTime = 0;
+        }
 
         sf::Event evnt;
         while (window.pollEvent(evnt)) {
