@@ -1,13 +1,14 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-class Player {
+class Entity {
 public:
-  Player(const sf::Font& font);
-  ~Player();
+  Entity(const sf::Font& font);
 
-  void Update();
   void Draw(sf::RenderWindow& window);
-private:
+
+  sf::Vector2f GetPosition();
+protected:
+  int x, y;
   sf::Text sprite;
 };

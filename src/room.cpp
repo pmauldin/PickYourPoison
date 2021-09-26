@@ -1,9 +1,10 @@
 #include "room.h"
+#include "constants.h"
 
 Room::Room(const sf::Font& font) {
   sprite.setFont(font);
   sprite.setString('#');
-  sprite.setCharacterSize(64);
+  sprite.setCharacterSize(TILE_SIZE);
   sprite.setFillColor(sf::Color::Black);
   sprite.setStyle(sf::Text::Bold);
 }
@@ -13,19 +14,17 @@ Room::~Room() {}
 void Room::Update() {}
 
 void Room::Draw(sf::RenderWindow& window) {
-  int width = 64;
-  float xPos = 100;
-  for (int x = 0; x < 20; x++) {
-    float yPos = 100;
-    for (int y = 0; y < 15; y++) {
-      if (!(x > 0 & x < 19 && y > 0 && y < 14)) {
+  float xPos = 0;
+  for (int x = 0; x < MAP_WIDTH; x++) {
+    float yPos = 0;
+    for (int y = 0; y < MAP_HEIGHT; y++) {
+      if (x == 0 || x == MAP_WIDTH - 1 || y == 0 || y == MAP_HEIGHT - 1) {
         sprite.setPosition(xPos, yPos);
         window.draw(sprite);
       };
 
-      yPos += width / 1.8f;
+      yPos += TILE_SIZE_Y;
     }
-    xPos += width / 2;
+    xPos += TILE_SIZE_X;
   }
-  // window.draw(sprite);
 }
