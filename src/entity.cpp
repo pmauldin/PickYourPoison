@@ -10,8 +10,8 @@ Entity::Entity(const sf::Font& font) {
   y = 0;
 }
 
-sf::Vector2f Entity::GetPosition() {
-  return sprite.getPosition();
+const sf::Vector2i Entity::GetPosition() {
+  return sf::Vector2i(x, y);
 }
 
 void Entity::Draw(sf::RenderWindow& window) {

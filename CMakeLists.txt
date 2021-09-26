@@ -10,6 +10,7 @@ set(
   ${PROJECT_SOURCE_DIR}/src/player.cpp
   ${PROJECT_SOURCE_DIR}/src/room.cpp
   ${PROJECT_SOURCE_DIR}/src/entity.cpp
+  ${PROJECT_SOURCE_DIR}/src/npc.cpp
 )
 
 file(COPY assets DESTINATION .)

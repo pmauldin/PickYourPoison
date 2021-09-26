@@ -1,6 +1,5 @@
 #pragma once
 #include "entity.h"
-#include <SFML/Graphics.hpp>
 
 class Player : public Entity {
 public:
@@ -8,6 +7,5 @@ public:
 
   void Update();
 private:
-  int x, y;
   sf::Clock clock;
 };

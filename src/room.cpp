@@ -18,7 +18,7 @@ void Room::Draw(sf::RenderWindow& window) {
   for (int x = 0; x < MAP_WIDTH; x++) {
     float yPos = 0;
     for (int y = 0; y < MAP_HEIGHT; y++) {
-      if (x == 0 || x == MAP_WIDTH - 1 || y == 0 || y == MAP_HEIGHT - 1) {
+      if (!(x == MAP_WIDTH - 1 && y == (int)8) && (x == 0 || x == MAP_WIDTH - 1 || y == 0 || y == MAP_HEIGHT - 1)) {
         sprite.setPosition(xPos, yPos);
         window.draw(sprite);
       };

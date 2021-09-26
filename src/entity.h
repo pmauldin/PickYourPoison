@@ -7,7 +7,7 @@ public:
 
   void Draw(sf::RenderWindow& window);
 
-  sf::Vector2f GetPosition();
+  const sf::Vector2i GetPosition();
 protected:
   int x, y;
   sf::Text sprite;

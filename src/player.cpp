@@ -1,13 +1,11 @@
 #include "player.h"
 #include "constants.h"
 
-static const int INPUT_COOLDOWN = 100;
-
 Player::Player(const sf::Font& font) : Entity(font) {
   sprite.setString('@');
   sprite.setFillColor(sf::Color(255, 215, 0));
 
-  x = MAP_WIDTH / 2;
+  x = MAP_WIDTH / 4;
   y = MAP_HEIGHT / 2;
   sprite.setPosition(x * TILE_SIZE_X, y * TILE_SIZE_Y);
 }
@@ -27,7 +25,14 @@ void Player::Update() {
 
   int newX = x + playerMove.x;
   int newY = y + playerMove.y;
-  if (newX < 1 || newX >= MAP_WIDTH - 1 || newY < 1 || newY >= MAP_HEIGHT - 1) return;
+
+  if (newX < 1 || newX >= MAP_WIDTH - 1 || newY < 1 || newY >= MAP_HEIGHT - 1) {
+    if (newX == MAP_WIDTH - 1 && newY == 8) {
+      printf("You are winner!\n");
+    } else {
+      return;
+    }
+  };
 
   x += playerMove.x;
   y += playerMove.y;

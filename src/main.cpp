@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "player.h"
+#include "npc.h"
 #include "room.h"
 #include "constants.h"
 
@@ -22,6 +23,8 @@ int main() {
     }
 
     Player player(font);
+    NPC npc1(font, player, 12, 2, 1);
+    NPC npc2(font, player, 16, 8, -1);
     Room room(font);
 
     sf::Clock clock;
@@ -46,6 +49,8 @@ int main() {
         // Update
         while (lag >= MS_PER_UPDATE) {
             player.Update();
+            npc1.Update();
+            npc2.Update();
             lag -= MS_PER_UPDATE;
         }
 
@@ -55,6 +60,8 @@ int main() {
         // window.setView(view);
 
         room.Draw(window);
+        npc1.Draw(window);
+        npc2.Draw(window);
         player.Draw(window);
 
         window.display();
